@@ -284,3 +284,56 @@ MIT License
 ---
 
 如果这个项目对你有帮助，请给个 Star 支持一下！
+
+## 增强版功能（新增）
+
+### 规则库支持
+
+本 Skill 集成了 Fofa 规则库，包含 30+ 常用资产规则，支持更精准的资产搜索。
+
+#### 内置规则分类
+
+- **Web 服务器**: Nginx、Apache、IIS、Tomcat
+- **数据库**: MySQL、Redis、MongoDB、PostgreSQL、Elasticsearch
+- **CMS**: WordPress、Drupal、Joomla
+- **框架**: Spring、Django、Laravel、ThinkPHP
+- **中间件**: WebLogic、JBoss、WebSphere
+- **安全设备**: 防火墙、WAF
+- **云服务**: 阿里云、腾讯云、AWS
+
+#### 使用增强版
+
+```bash
+# 使用增强版主程序
+python -m src.main_enhanced "查找广东地区的 Nginx 服务器"
+
+# 查看规则库
+python -m src.main_enhanced --list-rules
+
+# 搜索规则
+python -m src.main_enhanced --search-rule nginx
+
+# 交互模式（支持规则库功能）
+python -m src.main_enhanced --interactive
+```
+
+#### 增强版特性
+
+1. **智能规则匹配**: 自动识别查询中的资产类型，匹配最佳规则
+2. **查询建议**: 提供多个匹配的查询建议
+3. **置信度评估**: 显示查询匹配的置信度
+4. **规则组合**: 自动组合规则查询和地理位置、端口等条件
+
+#### 示例
+
+```bash
+# 查询会自动匹配 Redis 规则
+python -m src.main_enhanced "查找暴露的 Redis 服务"
+# 输出: 使用规则: Redis (匹配度: 0.90)
+# 查询: app="Redis"
+
+# 查询会自动匹配 WordPress 规则并添加地理位置
+python -m src.main_enhanced "查找广东地区使用 WordPress 的网站"
+# 输出: 使用规则: WordPress (匹配度: 0.85)
+# 查询: app="WordPress" && region="Guangdong"
+```
